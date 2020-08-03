@@ -29,15 +29,28 @@ total = 0
 df = pdr.get_data_yahoo(etfs, start, now)
 daily_return = (df['Adj Close'].pct_change())
 monthly_return = (df['Adj Close'].resample('M').ffill().pct_change())
-print(monthly_return)
-print(daily_return)
+#print(monthly_return)
+#print(daily_return)
 
-for i in df.index:
-    #print(daily_return['FDN'])
-    if daily_return['FDN'][i] > daily_return['IBB'][i]:
-        print("FDN is better than IBB")
-    else:
-        print("IBB is better than FDN")
+##for i in df.index:
+##    #print(daily_return['FDN'])
+##    if daily_return['FDN'][i] > daily_return['IBB'][i]:
+##        print("FDN is better than IBB")
+##    else:
+##        print("IBB is better than FDN")
+
+##for i in df.index:
+##    print(daily_return.sort( key=lambda e : e[i] ))
+    
+def get_return(daily_return):
+    return daily_return[1]
+print(daily_return.sort( key=get_return ))
+    
+
+
+
+
+
 
     
 
